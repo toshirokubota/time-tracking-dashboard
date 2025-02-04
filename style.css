@@ -38,12 +38,75 @@
 .text-bodyS {
     font-size: 15px;
 }
-main {
-    margin: 1.5em;
+body {
+    background-color: var(--very-dark-blue);
 }
-#dashboard {
+main {
     display: flex;
     flex-direction: column;
+    gap: 1.5em;
+    margin: 1.5em;
+}
+li {
+    list-style: none;
+}
+header {
+    height: 12rem;
+    background-color: var(--dark-blue);
+    color: white;
+    position: relative;
+    border-radius: 0.5rem;
+    /* margin-bottom: 1em; */
+}
+.user-card {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 7.5rem;
+    background-color: var(--desaturated-blue);
+    display: flex;
+    flex-direction: row;
+    border-radius: 0.5rem;
+    padding: 1em;
+    gap: 1em;
+}
+.user-card > img {
+    width: 64px;
+    height: 64px;
+    border-radius: 32px;
+    border: solid 1pt white;
+}
+.user-card > .caption {
+    display: flex;
+    flex-direction: column;
+}
+#period {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    color: var(--desaturated-blue);
+    position: absolute;
+    top: 9rem;
+    width: 100%;
+}
+#period li:hover, #period li:focus {
+    cursor: pointer;
+}
+#period[period='Daily'] li.daily {
+    color: white;
+}
+#period[period='Weekly'] li.weekly {
+    color: white;
+}
+#period[period='Monthly'] li.monthly {
+    color: white;
+}
+#dashboard {
+    display: grid;
+    grid-template-columns: 1fr;
+    /* display: flex;
+    flex-direction: column; */
+    gap: 1em;
 }
 .timeframe.daily, .timeframe.weekly, .timeframe.monthly {
     display: none;
@@ -62,41 +125,96 @@ main {
     position: relative;
     width: 100%;
     height: 160px;
+    border-radius: 0.5em;
+    overflow: hidden;
 }
-.backside {
-    display: block;
-    width: 100%;
-    height: 122px;
+#dashboard li > img {
     position: absolute;
-    top: 0;
-    z-index: 1;
+    top: -10px;
+    right: 10px;
 }
 .frontside {
-    display: block;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     width: 100%;
     height: 122px;
     position: absolute;
     bottom: 0;
-    z-index: 2;
+    z-index: 1;
     background-color: var(--dark-blue);
     color: white;
+    border-radius: 0.5em;
+    padding: 1em;
+}
+.frontside p {
+    display: inline-block;
+}
+.ellipse {
+    width: 32px;
+    height: 16px;
+    background: url('./images/icon-ellipsis.svg') 0 0 no-repeat;
+    margin-left: auto;
 }
 
-#work-card .backside {
+#work-card {
     background-color: var(--light-orange);
 }
-#play-card .backside {
+#play-card {
     background-color: var(--soft-blue);
 }
-#study-card .backside {
+#study-card {
     background-color: var(--light-red);
 }
-#exercise-card .backside {
+#exercise-card {
     background-color: var(--lime-green);
 }
-#social-card .backside {
+#social-card {
     background-color: var(--violet);
 }
-#self-care-card .backside {
+#self-care-card {
     background-color: var(--soft-orange);
+}
+@media only screen and (min-width: 700px) {
+    .text-headXL {
+        font-size: 56px;
+    }
+    .text-head {
+        font-size: 40px;
+    }
+    main {
+        display: flex;
+        flex-direction: row;
+        gap: 30px;
+    }
+    header {
+        width: 255px;
+        height: 518px;
+        margin-bottom: 0;
+    }
+    .user-card {
+        height: 354px;
+        flex-direction: column;
+    }
+    #period {
+        flex-direction: column;
+        align-content:space-around;
+        justify-content: space-around;
+        top: 380px;
+        height: 132px;
+        padding: 16px;
+    }
+    #dashboard {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 30px;
+        /* grid-auto-rows: 1fr; */
+    }
+    #dashboard > li {
+        width: 255px;
+        height: 244px;
+    }
+    .frontside {
+        height: 199px;
+    }
 }

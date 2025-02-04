@@ -7,18 +7,19 @@ const appendItem = (item) => {
   const container = document.getElementById(category);
   const card = container.querySelector('.frontside');
   card.innerHTML = `
-    <p class="text-head">${item.title}</p>
+    <p class="text-body">${item.title}</p>
+    <p class=ellipse></p>
     <div class="timeframe daily">
         <p class="text-headXL">${item.timeframes.daily.current} hrs</p>
-        <p class="text-body">yesterday - ${item.timeframes.daily.previous} hrs</p>
+        <p class="text-bodyS">yesterday - ${item.timeframes.daily.previous} hrs</p>
     </div>
     <div class="timeframe weekly">
         <p class="text-headXL">${item.timeframes.weekly.current} hrs</p>
-        <p class="text-body">last week - ${item.timeframes.weekly.previous} hrs</p>
+        <p class="text-bodyS">last week - ${item.timeframes.weekly.previous} hrs</p>
     </div>
     <div class="timeframe monthly">
         <p class="text-headXL">${item.timeframes.monthly.current} hrs</p>
-        <p class="text-body">last month - ${item.timeframes.monthly.previous} hrs</p>
+        <p class="text-bodyS">last month - ${item.timeframes.monthly.previous} hrs</p>
     </div>
   `
   //<input type="checkbox" ${item.completed ? 'checked' : ''} />
@@ -47,6 +48,7 @@ for(let elm of elms) {
     elm.addEventListener('click', (e)=> {
         console.log(e.target.textContent);
         dashboard.setAttribute('period', e.target.textContent);
+        period.setAttribute('period', e.target.textContent);        
     });
 }
 
