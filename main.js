@@ -35,10 +35,16 @@ const period = document.getElementById('period');
 const elms = period.querySelectorAll('li');
 for(let elm of elms) {
     elm.addEventListener('click', (e)=> {
-        console.log(e.target.textContent);
         main.setAttribute('period', e.target.textContent);
     });
+    elm.addEventListener("keypress", function(e) {
+        if (e.key === "Enter") {
+            // console.log(e.target.textContent);
+            main.setAttribute('period', e.target.textContent);
+        }
+    });
 }
+
 
 // fetch the JSON data
 fetch('data.json').then((response) => {
@@ -47,7 +53,7 @@ fetch('data.json').then((response) => {
   return response.json();
 }).then((data) => {
   // handle the data
-  console.log(data);
+//   console.log(data);
 //   tasks = data;
   populateDOM(data);
 });
