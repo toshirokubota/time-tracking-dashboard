@@ -7,8 +7,10 @@ const appendItem = (item) => {
   const container = document.getElementById(category);
   const card = container.querySelector('.frontside');
   card.innerHTML = `
-    <p class="text-body">${item.title}</p>
-    <p class=ellipse></p>
+    <div class='category'>
+        <p class="text-body">${item.title}</p>
+        <p class=ellipse></p>
+    </div>
     <div class="timeframe daily">
         <p class="text-headXL">${item.timeframes.daily.current} hrs</p>
         <p class="text-bodyS">yesterday - ${item.timeframes.daily.previous} hrs</p>
@@ -42,13 +44,14 @@ const populateDOM = (data) => {
 //     appendItem(item);
 //   }
 }
+const main = document.querySelector('main');
 const period = document.getElementById('period');
 const elms = period.querySelectorAll('li');
 for(let elm of elms) {
     elm.addEventListener('click', (e)=> {
         console.log(e.target.textContent);
-        dashboard.setAttribute('period', e.target.textContent);
-        period.setAttribute('period', e.target.textContent);        
+        main.setAttribute('period', e.target.textContent);
+        //period.setAttribute('period', e.target.textContent);        
     });
 }
 
