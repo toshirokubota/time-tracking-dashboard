@@ -1,5 +1,3 @@
-const dashboard = document.getElementById('dashboard');
-// let tasks;
 
 const appendItem = (item) => {
   // add the markup for each item to the DOM
@@ -9,7 +7,7 @@ const appendItem = (item) => {
   card.innerHTML = `
     <div class='category'>
         <p class="text-body">${item.title}</p>
-        <p class=ellipse></p>
+        <p class="ellipse" tabindex="0"></p>
     </div>
     <div class="timeframe daily">
         <p class="text-headXL">${item.timeframes.daily.current} hrs</p>
@@ -24,25 +22,13 @@ const appendItem = (item) => {
         <p class="text-bodyS">last month - ${item.timeframes.monthly.previous} hrs</p>
     </div>
   `
-  //<input type="checkbox" ${item.completed ? 'checked' : ''} />
-
-//  container.appendChild(todo);
 };
 
 // append the data to the DOM
 const populateDOM = (data) => {
-  // with a forEach loop
   data.forEach((item) => {
     appendItem(item);
   });
-
-//   // this can also be written
-//   data.forEach(appendItem);
-
-//   // with a for ... of loop
-//   for (const item of data) {
-//     appendItem(item);
-//   }
 }
 const main = document.querySelector('main');
 const period = document.getElementById('period');
@@ -51,7 +37,6 @@ for(let elm of elms) {
     elm.addEventListener('click', (e)=> {
         console.log(e.target.textContent);
         main.setAttribute('period', e.target.textContent);
-        //period.setAttribute('period', e.target.textContent);        
     });
 }
 
